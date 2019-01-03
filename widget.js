@@ -303,6 +303,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             console.log("got pencilKeypress. evt:", evt);
             var tgtEl = $(evt.currentTarget);
             var posEl = tgtEl.parents('.com-chilipeppr-xyz-pos-well');
+            console.log("pos element",posEl);
             var axis = posEl.data('axis').toUpperCase();
             console.log("axis:", axis);
             
@@ -310,7 +311,9 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             if (evt.keyCode == 13) {
                 console.log("enter key hit");
                 
-                // send gcode
+            // send gcode
+            // var gcode= 'G10 L2 P' + (this.lastCoords.coordNum - 53) + evt.data.substr(-1).toUpperCase() + (this.lastVal[evt.data]);
+
                 var gcode = "G90 G0 " + axis + tgtEl.val();
                 console.log("about to send gcode:", gcode);
                 chilipeppr.publish('/com-chilipeppr-widget-serialport/jsonSend', {
