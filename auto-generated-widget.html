@@ -544,18 +544,25 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             console.log("got pencilKeypress. evt:", evt);
             var tgtEl = $(evt.currentTarget);
             var posEl = tgtEl.parents('.com-chilipeppr-xyz-pos-well');
-            console.log("pos element",posEl);
+            var coorEl = tgtEl.parents('.com-chilipeppr-widget-xyz-coords');
+
+            console.log("coorEl element",coorEl);
             var axis = posEl.data('axis').toUpperCase();
+            
+            // var coordNum = coorEl.data('coordNum');
+            // console.log("coordNum:", coordNum);
+            
             console.log("axis:", axis);
+            var maxis ='m'+ posEl.data('axis');
             
             // see if return key
             if (evt.keyCode == 13) {
                 console.log("enter key hit");
                 
             // send gcode
-            // var gcode= 'G10 L2 P' + (this.lastCoords.coordNum - 53) + evt.data.substr(-1).toUpperCase() + (this.lastVal[evt.data]);
+             var gcode= 'G10 L2 P' + (this.lastCoords.coordNum - 53) + axis + " "+ String(tgtEl.val() -this.lastVal[maxis]);
 
-                var gcode = "G90 G0 " + axis + tgtEl.val();
+                //var gcode = "G90 G0 " + axis + tgtEl.val();
                 console.log("about to send gcode:", gcode);
                 chilipeppr.publish('/com-chilipeppr-widget-serialport/jsonSend', {
                     D: gcode, 
