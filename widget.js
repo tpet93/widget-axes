@@ -269,12 +269,12 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             // attach descriptive popoover
             btn.popover({
                 animation: true,
-                delay: 500,
+                delay: 1500,
                 placement: "auto",
                 container: "body",
                 trigger: "hover",
                 title: "Enter a new coordinate",
-                content: "Move to a new coordinate in this axis by modifying the value and hitting the enter key."
+                content: "Set this coordinate to a new value by modifying the value and hitting the enter key."
             });
         },
         pencilOnMouseout: function(evt) {
