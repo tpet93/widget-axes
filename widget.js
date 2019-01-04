@@ -319,7 +319,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 console.log("enter key hit");
                 
             // send gcode
-             var gcode= 'G10 L2 P' + (this.lastCoords.coordNum - 53) + axis + " "+ String(tgtEl.val() -this.lastVal[maxis]);
+             var gcode= 'G10 L2 P' + (this.lastCoords.coordNum - 53) + axis + " "+ String(this.lastVal[maxis] - tgtEl.val());
 
                 //var gcode = "G90 G0 " + axis + tgtEl.val();
                 console.log("about to send gcode:", gcode);
